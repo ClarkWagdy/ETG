@@ -1,0 +1,27 @@
+.acti-bg{
+    border-radius: 25px !important;
+}
+
+
+.act-media-bg{
+    width: 100% !important;
+    height:50vh;
+position: relative;
+top: 0;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+
+
+.pic-med .slick-slide{
+    width: 100% !important;
+}
+.pic-med .slick-list .slick-track{
+    width: 100% !important;
+}
+@media screen and (max-width: 1199px) {
+
+    .order-med:nth-child(1) > .pic-med { order: -1; }  
+}

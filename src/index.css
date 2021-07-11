@@ -1,0 +1,21 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css");
+   
+   @font-face {
+    font-family: "Rhesmanisa";
+    src: local("Rhesmanisa"),
+     url("./Fonts/Rhesmanisa/Rhesmanisa.otf") format("truetype");
+
+     
+   }
+   @font-face {
+    font-family: "abeatbyKai";
+    src: local("abeatbyKai"),
+     url("./Fonts/abeatbyKai/ABEAKRG_0.TTF") format("truetype");
+ 
+
+   }
+
+body{
+    font-family:  Helvetica;
+    background-color: #141620;
+}

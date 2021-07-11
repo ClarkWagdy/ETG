@@ -1,0 +1,20 @@
+.r-notifi {
+  height: 80px;
+}
+.notific-icon {
+padding: 8px;
+  border-radius: 50% !important;
+  background-color: rgba(225,225,225, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time-s {
+  font-size: 14px;
+  opacity: 0.7;
+
+}
+
+.hr-noti{
+  opacity: 0.15;
+}

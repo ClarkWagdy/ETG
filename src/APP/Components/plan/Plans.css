@@ -1,0 +1,239 @@
+.p-trip {
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+@media only screen and (max-width: 720px) {
+  .p-trip {
+    font-size: 12px;
+    letter-spacing: 1.3px;
+  }
+}
+.img-card {
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 25px 25px 0 0;
+}
+.shap-p-card {
+  width: 100% !important;
+  height: 20px !important;
+  background-color: white;
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  margin-bottom: -1px;
+}
+.plan-card {
+  width: 100%;
+  height: 300px;
+  border-radius: 25px !important;
+}
+.card-data-plan {
+  width: 100%;
+  background-color: white;
+  border-radius: 0 0 25px 25px;
+  color: #141620;
+}
+.plan-card:hover .img-card {
+  background-size: 110%;
+}
+
+.city-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px white solid;
+}
+.plan-tour .city-img {
+  min-width: 80px;
+  min-height: 80px;
+
+ }
+@media only screen and (max-width: 960px) {
+  .plan-tour .city-img {
+   min-width: 60px;
+   min-height: 60px;
+
+  }
+  .plan-tour h4{
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.plan-media {
+  min-width: 89vw !important;
+  height: 450px;
+  background-color: transparent;
+  border-radius: 25px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.slick-dots li button::before {
+  color: white !important;
+}
+.slick-active {
+  color: white !important;
+  opacity: 1 !important;
+}
+.w-bg{
+  background-color: rgba(225,225,225, 0.4);
+  border-radius: 25px;
+  padding: 10px;
+}
+.name-place{
+  color: white;
+}
+.place-tour{
+  cursor: pointer;
+}
+.place-tour:hover .city-img {
+  border: 2px tomato solid;
+}
+.place-tour:hover .name-place {
+color: tomato;
+}
+.reser-btn{
+  width: 200px;
+  height: 40px;
+  border: 1px solid #16c79a;
+  background-color: #16c79a;
+  border-radius: 25px;
+  color: white;
+}
+.reser-btn:hover{
+  color:white;
+  border: 1px solid #16c79a;
+  background-color: transparent;
+}
+
+
+
+#slidechbo{
+  display: none;
+}
+
+.ch-book{
+  position: fixed;
+  top: 0;
+  width: 100% ;
+  height: 100% ;
+  background-color: rgba(0, 0, 0,0.6);
+  z-index: 80 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ch-book .close{
+color: tomato;
+font-size: 25px;
+width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ch-book .close:hover{
+  color: white;
+
+  background-color: tomato;
+
+  border-radius: 50%;
+  font-size: 25px;
+ 
+  }
+.ch-slide{
+width: 400px;
+
+  background-color: white;
+  border-radius: 25px;
+}
+.rn-h{
+  color: #141620;
+  font-weight: bold;
+}
+.ch-book .input{
+  background-color: rgba(20, 22, 32,0.8);
+  color: white;
+  width: 350px !important;
+  
+}
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+.ch-book .reser-btn:hover{
+  color:  #141620;
+}
+.h-done{
+  color:#141620;
+}
+#slidechbo{
+  display: none;
+}
+.ch-dn-slide{
+  width: 250px;
+height: 250px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.done-anima{
+  font-size: 150px;
+  color: #16c79a;
+  animation: d-an 1s;
+}
+@keyframes d-an {
+  0%   {
+    transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+.trip-data{
+  width: 400px;
+  border-radius: 25px;
+  background-color: white;
+align-items: center;
+justify-content: center;
+}
+.tran-img{
+  width: 300px;
+  height: 180px;
+border-radius: 25px;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+.TotalPrice{
+  color: tomato;
+}
+.opps{
+  color: #ffc700;
+}
+@media only screen and (max-width: 960px) {
+  .tran-img{
+    width: 300px;
+    height: 140px;
+
+  }
+  .singlehotel .card-hotel{
+    max-height: 150px !important;
+  }
+}
+
+.arr-changeday:hover{
+  color: #ffc700;
+transform: scale(1.2);
+}
+.daynum{
+  color: #ffc700;
+  font-weight: bold;
+  font-size: 18;
+}

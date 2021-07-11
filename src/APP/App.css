@@ -1,0 +1,72 @@
+.font-face-rh {
+  font-family: "Rhesmanisa";
+}
+.font-face-ab {
+  font-family: "abeatbyKai";
+}
+.white {
+  color: white;
+}
+.black {
+  color: #141620;
+}
+.flex-container-c {
+  display: flex;
+  flex-direction: column;
+}
+
+.z-in-1{
+  z-index: 1;
+}
+/*input*/
+.input {
+  width: 100%;
+  border-radius: 15px;
+  height: 35px;
+  color: #141620;
+  background-color: rgb(255, 255, 255, 0.7);
+  border: none;
+  outline: none;
+
+}
+.input:hover{
+  border-radius: 15px;
+  box-shadow: 0 0 0pt 2pt #51c4d3;
+  outline: none !important;
+}
+.input:focus {
+  border-radius: 15px;
+  box-shadow: 0 0 0pt 2pt #16c79a;
+  outline: none !important;
+}
+.inputerror {
+  box-shadow: 0 0 0pt 2pt tomato;
+  outline: none !important;
+}
+
+
+
+
+
+.footer-bg {
+  margin-top: 30px;
+  background-color: rgb(255, 255, 255, 0.04);
+}
+.sticky{
+  position: sticky;
+}
+.full-screen-err{
+  width: 100% !important;
+  height: 100vh;
+  display: flex;
+  align-items: center !important;
+}
+.head-bg{
+ 
+  background-image: linear-gradient(rgba(20,22,32, 1),  transparent );
+  z-index: 50 !important;
+}
+.s-h{
+  position: relative;
+  z-index: 50 !important;
+}

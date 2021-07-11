@@ -1,0 +1,75 @@
+.text-break {
+  height: 70%;
+  width: 2px;
+  background-color: white;
+}
+.fullsc-load {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+.card-hotel {
+  height: 150px;
+  border-radius: 25px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 960px) {
+  .card-hotel {
+    height: 200px;
+
+  }
+  
+}
+.from-to-color {
+  color: #ffc947 !important;
+}
+.price-color {
+  color: #fb3640 !important;
+  font-size: 20px;
+}
+.card-data {
+  border-radius: 15px;
+  padding: 5px;
+  background-color: rgba(20, 22, 32, 0.5);
+}
+.loca-hotel {
+  cursor: pointer;
+}
+.loca-hotel:hover {
+  color: tomato !important;
+}
+.btn-read {
+  color: white;
+  border: none;
+  width: 100px;
+  border-radius: 25px;
+  background-color: #1eae98;
+}
+.btn-read:hover {
+  background-color: transparent;
+  font-weight: bold;
+}
+.trans-pro-img{
+  height: 150px;
+  width: 350px;
+  border: white 2px solid;
+  border-radius: 25px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}@media only screen and (max-width: 720px) {
+  .trans-pro-img{
+    height: 100px;
+    width: 130px;
+  }
+}
+#pro-pla
+ .card-hotel{
+min-height: 350px;
+}.pro-price{
+  font-weight: bold;
+  color: #fb3640;
+  
+}
