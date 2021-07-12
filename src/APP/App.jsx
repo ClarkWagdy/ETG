@@ -340,14 +340,19 @@ class App extends Component {
                <Route
                 path="/plan/:id"
                 exact
+                
                 render={(props) =>
+                  this.state.user ? (
                     <Plan
                       setuser={this.setuser}
                       city={this.state.city}
                       adventure={this.state.adventure}
                       user={this.state.user}
                       {...props}
-                    />}
+                    />
+                    ) : (
+                      <Redirect to="/mustlogin" />
+                    )}
               />
               <Route path="/mustlogin" exact component={Pleaselogin}></Route>
               <Route path="/404" component={Notfound404}></Route>

@@ -67,10 +67,11 @@ class Plan extends Component {
     transport: [],
     TotalPrice: "",
     id: "",
-    hotel:[],
+    hotel: [],
     msg: "",
-    endDate:"",
-    daynum:0,
+    endDate: "",
+    daynum: 0,
+    errmas:""
   };
   async componentDidMount() {
     await axios
@@ -85,21 +86,23 @@ class Plan extends Component {
           this.setState({ comments, comment: comments[0] });
         }
 
-        this.state.plan.duration.days>0?(this.handelchangeday(1)):(this.handelchangeday(0))
-        
+        this.state.plan.duration.days > 0
+          ? this.handelchangeday(1)
+          : this.handelchangeday(0);
       });
   }
-  handelchangeday=day=> {
+  handelchangeday = (day) => {
     var tour = [];
-var daynum=this.state.daynum+day;
-if(daynum>=1&& daynum<=this.state.plan.duration.days||day===0)
- {   this.state.plan.tour.map((ele) => {
-      if (ele.day === `${daynum}`) {
-        tour.push(ele);
-      }
-    });
-    this.setState({ tour,daynum });}
-  }
+    var daynum = this.state.daynum + day;
+    if ((daynum >= 1 && daynum <= this.state.plan.duration.days) || day === 0) {
+      this.state.plan.tour.map((ele) => {
+        if (ele.day === `${daynum}`) {
+          tour.push(ele);
+        }
+      });
+      this.setState({ tour, daynum });
+    }
+  };
   timeconvert(tim) {
     var sline = tim.split(":");
     var time;
@@ -126,25 +129,16 @@ if(daynum>=1&& daynum<=this.state.plan.duration.days||day===0)
   };
   handelchange = (e) => {
     let state = { ...this.state };
- if(e.currentTarget.name!="withHotel")
-    {
-    state[e.currentTarget.name] = e.currentTarget.value;
-    
-  }
-else{
-  if($("#withHotel").prop("checked")) {
-    state.withHotel=true;
-  }
-  else
-  {
-    state.withHotel=false;
-  }
-}
-this.setState(state);
-  
-         
-
-
+    if (e.currentTarget.name != "withHotel") {
+      state[e.currentTarget.name] = e.currentTarget.value;
+    } else {
+      if ($("#withHotel").prop("checked")) {
+        state.withHotel = true;
+      } else {
+        state.withHotel = false;
+      }
+    }
+    this.setState(state);
   };
   handlecheck() {
     $("#slidechbo").show();
@@ -155,33 +149,41 @@ this.setState(state);
   handlecheckava = async () => {
     if (this.state.start === "") {
       $(".in-start").addClass("inputerror");
-    } else if (!this.state.persons > 0) {
+    } else if(new Date(this.state.start).getTime()<new Date().getTime()){
+      $(".in-start").addClass("inputerror");
+      this.setState({errmas:"Enter the correct date in future"})
+    }
+     else if (this.state.persons <= 0) {
       $(".in-start").removeClass("inputerror");
       $(".in-per").addClass("inputerror");
+      this.setState({errmas:"Choose the number of people"})
     } else {
       $(".in-start").removeClass("inputerror");
       $(".in-per").removeClass("inputerror");
+      this.setState({errmas:""})
       const check = {
         start: this.state.start,
         persons: this.state.persons,
         withHotel: this.state.withHotel,
       };
-      await axios.post(`${backendurl}/plans/${this.state.plan.id}/check`, check, {headers: { Authorization: `${this.state.token}` }})
+      await axios
+        .post(`${backendurl}/plans/${this.state.plan.id}/check`, check, {
+          headers: { Authorization: `${this.state.token}` },
+        })
         .then((res) => {
-       
           if (res.data.available) {
             this.setState({
               id: res.data.id,
               TotalPrice: res.data.TotalPrice,
               transport: res.data.transport,
               hotel: res.data.hotel,
-              endDate:res.data.endDate
+              endDate: res.data.endDate,
             });
-              if(res.data.hotel>0){
-                this.setState({
-                  hotel: res.data.hotel,
-                });
-              }
+            if (res.data.hotel > 0) {
+              this.setState({
+                hotel: res.data.hotel,
+              });
+            }
             $("#check-book").addClass("d-none");
             $("#dataplan").removeClass("d-none");
           } else {
@@ -197,43 +199,40 @@ this.setState(state);
               $("#check-book").removeClass("d-none");
             }, 3000);
           }
-        
         })
-        .catch(err => {
-         
+        .catch((err) => {
           if (err.response.status === 403)
             gettoken().then((res) => {
               this.setState({ token: res });
             });
-        })
+        });
     }
   };
 
-
-   handleconfirm= async()=>{
-    const id={id:this.state.id};
+  handleconfirm = async () => {
+    const id = { id: this.state.id };
     await axios
-    .post(`${backendurl}/plans/confirm`, id, {
-      headers: { Authorization: `${this.state.token}` },
-    }) .then(res=>{
-if(res.status===201){
-  $("#dataplan").addClass("d-none");
-  $("#done").removeClass("d-none");
-  setTimeout(() => {
-    $("#slidechbo").hide();
-  }, 1500);
-getnotifications();
-}
-    }).catch((error) => {
-     
-      if (error.response.status === 403)
-        gettoken().then((res) => {
-          this.setState({ token: res });
-        });
-    });
-  }
+      .post(`${backendurl}/plans/confirm`, id, {
+        headers: { Authorization: `${this.state.token}` },
+      })
+      .then((res) => {
+        if (res.status === 201) {
+          $("#dataplan").addClass("d-none");
+          $("#done").addClass("d-flex").removeClass("d-none");
+          setTimeout(() => {
+            $("#slidechbo").hide();
+          }, 1500);
+          getnotifications();
+        }
+      })
+      .catch((error) => {
+        if (error.response.status === 403)
+          gettoken().then((res) => {
+            this.setState({ token: res });
+          });
+      });
+  };
   render() {
-  
     if (this.state.load) {
       return <Loading />;
     }
@@ -253,7 +252,7 @@ getnotifications();
             <Slider {...settings}>
               {this.state.plan.media.map((e, ind) => {
                 return (
-                  <div key={ind}>
+                  <div key={ind + 0.8}>
                     <div
                       className="plan-media w-100 p-0 m-0"
                       style={{ backgroundImage: `url(${e})` }}
@@ -273,7 +272,7 @@ getnotifications();
               <h3 className="text-white p-0 m-0 ">Features</h3>
               {this.state.plan.features.map((ele, ind) => {
                 return (
-                  <p key={ind} className="text-white p-0 m-0">
+                  <p key={ind + 150} className="text-white p-0 m-0">
                     <span style={{ color: "#CD113B" }}>-</span> {ele}
                   </p>
                 );
@@ -300,10 +299,28 @@ getnotifications();
             </div>
           </div>
 
-          <div className="row text-center my-2">{this.state.plan.duration.days>0?(<>
-          <h4 className="text-white "><i className="fas fa-chevron-left arr-changeday" 
-          onClick={()=>this.handelchangeday(-1)}></i><span className="mx-3"> Day <span className="daynum">{this.state.daynum}</span></span> <i className="fas fa-chevron-right arr-changeday" onClick={()=>this.handelchangeday(1)}></i></h4>
-          </>):(<span></span>)}</div>
+          <div className="row text-center my-2">
+            {this.state.plan.duration.days > 0 ? (
+              <>
+                <h4 className="text-white ">
+                  <i
+                    className="fas fa-chevron-left arr-changeday"
+                    onClick={() => this.handelchangeday(-1)}
+                  ></i>
+                  <span className="mx-3">
+                    {" "}
+                    Day <span className="daynum">{this.state.daynum}</span>
+                  </span>{" "}
+                  <i
+                    className="fas fa-chevron-right arr-changeday"
+                    onClick={() => this.handelchangeday(1)}
+                  ></i>
+                </h4>
+              </>
+            ) : (
+              <span></span>
+            )}
+          </div>
 
           <div className="row plan-tour">
             {this.state.tour.map((ele, ind) => {
@@ -315,7 +332,7 @@ getnotifications();
                         ? "w-bg row d-flex my-2 m-0 p-2 align-items-center justify-content-between"
                         : "row d-flex  my-2 m-0 p-2 align-items-center justify-content-between"
                     }
-                    key={ind}
+                    key={ele.id}
                   >
                     <div
                       className="col-12 col-sm-6 d-flex  align-items-center place-tour"
@@ -485,6 +502,7 @@ getnotifications();
 
               <div className="d-flex flex-column align-items-center text-center">
                 <div className="d-flex flex-column text-start   p-0 m-0">
+                <span className="text-danger" style={{fontSize:"14px"}}>{this.state.errmas}</span>
                   <label className="fw-bold p-0 m-0 fs-5 mx-2" htmlFor="from">
                     <i className="fas fa-calendar-day"></i> Chech-in
                   </label>
@@ -514,25 +532,29 @@ getnotifications();
                     id="persons"
                   />
                 </div>
-{this.state.plan.duration.days>0?(<>
-<div className="text-start w-100 mt-2 m-0 p-0">
-  <div className="form-check ">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="withHotel"
-                      id="withHotel"
-                      onChange={this.handelchange}
-                    />
-                    <label
-                      className="  fw-bold p-0 m-0 fs-6"
-                      htmlFor="withHotel"
-                    >
-                      With Hotel
-                    </label>
-                  </div>
-                  </div>
-</>):(<span></span>)}
+                {this.state.plan.duration.days > 0 ? (
+                  <>
+                    <div className="text-start w-100 mt-2 m-0 p-0">
+                      <div className="form-check ">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          name="withHotel"
+                          id="withHotel"
+                          onChange={this.handelchange}
+                        />
+                        <label
+                          className="  fw-bold p-0 m-0 fs-6"
+                          htmlFor="withHotel"
+                        >
+                          With Hotel
+                        </label>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <span></span>
+                )}
                 <div className="my-2 mt-3 m-0 p-0 w-100 text-center r-n-card">
                   <button
                     onClick={this.handlecheckava}
@@ -544,11 +566,14 @@ getnotifications();
               </div>
             </div>
 
-            <div id="done" className="d-none ch-dn-slide">
+            <div id="done" className="d-none">
               <i className="done-anima fas fa-check"></i>
             </div>
 
-            <div id="dataplan" className="trip-data d-none d-flex flex-column p-2">
+            <div
+              id="dataplan"
+              className="trip-data d-none d-flex flex-column p-2"
+            >
               {this.state.transport.driverName ? (
                 <>
                   <div className="d-flex  m-0 p-2 pt-3  px-4 w-100 align-items-center justify-content-between r-n-card">
@@ -576,24 +601,42 @@ getnotifications();
                     <h4>Driver Name: {this.state.transport.driverName}</h4>
                     <h4>Driver Phone: {this.state.transport.phone}</h4>
                   </div>
-               
-               {this.state.hotel?(<>
-              <span className="singlehotel w-100 p-0 m-0">
-                <SingleHotel show={true} room={this.state.hotel.room} indx={2} hotels={this.state.hotel} city={this.state.plan.city} from={this.state.start} to={this.state.endDate}></SingleHotel>
-                </span>
-               </>):(<span></span>)}
-               
-               <div className="d-flex justify-content-between w-100 my-1 m-0 px-5 p-0">
-                 <div>
-                  <h4 className="fw-bold p-0 m-0">Total Price</h4>
+
+                  {this.state.hotel ? (
+                    <>
+                      <span className="singlehotel w-100 p-0 m-0">
+                        <SingleHotel
+                          show={true}
+                          room={this.state.hotel.room}
+                          indx={2}
+                          hotels={this.state.hotel}
+                          city={this.state.plan.city}
+                          from={this.state.start}
+                          to={this.state.endDate}
+                        ></SingleHotel>
+                      </span>
+                    </>
+                  ) : (
+                    <span></span>
+                  )}
+
+                  <div className="d-flex justify-content-between w-100 my-1 m-0 px-5 p-0">
+                    <div>
+                      <h4 className="fw-bold p-0 m-0">Total Price</h4>
+                    </div>
+                    <div>
+                      <h4 className="TotalPrice p-0 m-0 ">
+                        {this.state.TotalPrice}
+                      </h4>
+                    </div>
                   </div>
                   <div>
-                  <h4 className="TotalPrice p-0 m-0 ">{this.state.TotalPrice}</h4>
-                  </div>
-                  </div>
-                  <div>
-                    <button  onClick={this.handleconfirm}
-                    className="reser-btn fw-bold">Reserve</button>
+                    <button
+                      onClick={this.handleconfirm}
+                      className="reser-btn fw-bold"
+                    >
+                      Reserve
+                    </button>
                   </div>
                 </>
               ) : (
@@ -604,12 +647,11 @@ getnotifications();
             <div id="notava" className="d-none trip-data d-flex p-2">
               {this.state.msg != "" ? (
                 <>
-                <div className="d-flex flex-column text-center">
-                <h4 className="opps">OPPS!</h4>
-                <h4 className="fw-bold TotalPrice">{this.state.msg}</h4>
-                </div>
+                  <div className="d-flex flex-column text-center">
+                    <h4 className="opps">OPPS!</h4>
+                    <h4 className="fw-bold TotalPrice">{this.state.msg}</h4>
+                  </div>
                 </>
-                
               ) : (
                 <span></span>
               )}

@@ -15,12 +15,12 @@ class Planshow extends Component {
     if (this.state.plans.length > 0)
       return (
         <React.Fragment>
-          {this.state.plans.map((ele, ind) => {
+          {this.state.plans.map((ele) => {
             return (
               <>
                 <div
                   className="col-md-6  col-xl-4 col-12  m-0 p-2 plan-card d-flex flex-column"
-                  key={ind}
+                  key={ele.id}
                   onClick={e=>{window.location.assign(`/${this.props.path?(this.props.path):('plan')}/${ele.id}`)}}
                 >
                   <div
