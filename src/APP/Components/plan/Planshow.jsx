@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Loading from "./../mostuse/loading";
 import Rate from "./../mostuse/rate";
+import "./Plans.css"
 class Planshow extends Component {
   state = { plans: this.props.plans };
 
