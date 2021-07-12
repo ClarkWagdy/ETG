@@ -19,7 +19,7 @@ class Planshow extends Component {
             return (
               <>
                 <div
-                  className="col-12 col-xl-4 m-0 p-2 plan-card d-flex flex-column"
+                  className="col-md-6  col-xl-4 col-12  m-0 p-2 plan-card d-flex flex-column"
                   key={ind}
                   onClick={e=>{window.location.assign(`/${this.props.path?(this.props.path):('plan')}/${ele.id}`)}}
                 >
