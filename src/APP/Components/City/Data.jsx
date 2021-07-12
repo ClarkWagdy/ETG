@@ -8,7 +8,7 @@ import getfavorite from "../mostuse/getfavorite";
 import removefev from "../mostuse/removefav";
 import Loading from "../mostuse/loading";
 class InsideData extends Component {
-  state = { type: this.props.type, fav: [] };
+  state = { type: this.props.type, fav: [],allid:[] };
   constructor(props) {
     super(props);
 
@@ -16,8 +16,13 @@ class InsideData extends Component {
   }
 
   async getfav() {
+    var allid =[];
     if (JSON.parse(localStorage.getItem("user"))) {
-      await getfavorite().then((res) => {this.setState({ fav: res });});}
+      await getfavorite().then((res) => {
+      res.filter(e=>{allid.push(e.id)})
+        this.setState({ fav: res ,allid});
+      
+      });}
   }
   changeicon = async (id, type) => {
     if ($(`#${id}`).hasClass("far") && !$(`#${id}`).hasClass("fas")) {
@@ -35,7 +40,7 @@ class InsideData extends Component {
   };
   render() {
     AOS.init({ duration: 500 });
-    if (this.state.fav.length>0||this.state.fav===[] && this.props.data) {
+    if (this.props.data) {
       return (
         <React.Fragment>
           <div className=" container-fluid   m-0 p-0 my-2">
@@ -83,19 +88,19 @@ class InsideData extends Component {
                           </button>
                         </div>
                         <div id="love-ptn-city" className="p-0 m-0 ">
-                          {this.state.fav.filter((ele) => {
-                           ( ele.id === e.id) ? $(`#${e.id}`).addClass("fas")
-                              : $(`#${e.id}`).addClass("far");
-                              return;
-
-                              
-                          })}
-
+                          
+                          
+              
+{this.state.fav.length>0?(  <i
+                            id={e.id}
+                            className= {`${this.state.allid.includes(e.id)?("fas"):("")} far fa-heart text-danger fa-2x`}
+                            onClick={() => this.changeicon(e.id, e.type)}
+                          ></i>):(
                           <i
                             id={e.id}
                             className="far fa-heart text-danger fa-2x"
                             onClick={() => this.changeicon(e.id, e.type)}
-                          ></i>
+                          ></i>)}
                         </div>
                       </div>
                     </div>

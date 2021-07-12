@@ -95,10 +95,11 @@ class Plan extends Component {
     var tour = [];
     var daynum = this.state.daynum + day;
     if ((daynum >= 1 && daynum <= this.state.plan.duration.days) || day === 0) {
-      this.state.plan.tour.map((ele) => {
+      this.state.plan.tour.filter((ele) => {
         if (ele.day === `${daynum}`) {
           tour.push(ele);
         }
+
       });
       this.setState({ tour, daynum });
     }
@@ -129,7 +130,7 @@ class Plan extends Component {
   };
   handelchange = (e) => {
     let state = { ...this.state };
-    if (e.currentTarget.name != "withHotel") {
+    if (e.currentTarget.name !== "withHotel") {
       state[e.currentTarget.name] = e.currentTarget.value;
     } else {
       if ($("#withHotel").prop("checked")) {
@@ -328,7 +329,7 @@ class Plan extends Component {
                 <>
                   <div
                     className={
-                      ind % 2 == 0
+                      ind % 2 === 0
                         ? "w-bg row d-flex my-2 m-0 p-2 align-items-center justify-content-between"
                         : "row d-flex  my-2 m-0 p-2 align-items-center justify-content-between"
                     }
@@ -645,7 +646,7 @@ class Plan extends Component {
             </div>
 
             <div id="notava" className="d-none trip-data d-flex p-2">
-              {this.state.msg != "" ? (
+              {this.state.msg !== "" ? (
                 <>
                   <div className="d-flex flex-column text-center">
                     <h4 className="opps">OPPS!</h4>

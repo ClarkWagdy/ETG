@@ -164,7 +164,7 @@ class Register extends Component {
   async signup(state) {
     const user = new FormData();
 
-    Object.keys(state).map((key) => {
+    Object.keys(state).filter((key) => {
       user.append(key, state[key]);
     });
     var backenderror = "";
