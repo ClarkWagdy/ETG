@@ -22,7 +22,7 @@ if(res.data.description){
             <div className="h-me s-h">
                <Header {...this.props} setuser={this.props.setuser} user={this.props.user} />
                </div>
-<Inhotel hotelinf={this.state.hotelinf}></Inhotel>
+<Inhotel hotelinf={this.state.hotelinf} type={this.props.match.params.type}></Inhotel>
 <div className="footer-bg">
          <Footer/></div>
         </React.Fragment> );}

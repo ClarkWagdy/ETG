@@ -109,6 +109,7 @@ else{
                 </div>
 </div>
 
+{this.props.type==="tr"?(<span></span>):(
 
 <div className="text-center">
 {this.state.showform?(  <div className="container my-2">
@@ -122,6 +123,9 @@ else{
  onClick={this.Reserve}>{this.props.room.price} $ Reserve</button>
 
 </div>
+
+)}
+
 </div>
         </React.Fragment> );
     }

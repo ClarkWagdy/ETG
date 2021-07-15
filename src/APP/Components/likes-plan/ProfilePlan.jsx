@@ -146,6 +146,7 @@ if(daynum>=1&& daynum<=this.state.splan.duration.days||day===0)
   };
 
   render() {
+    console.log(this.state.hotel)
     if (this.state.load) {
       return <Loading />;
     }

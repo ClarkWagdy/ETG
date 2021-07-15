@@ -84,10 +84,11 @@ if(comments.length>0){
 <div>
 <h3 className="text-white">Room</h3>
 
+{this.props.type==="tr"?(<span></span>):(
 
 <Rooms room={this.state.hotelinf.rooms} hid={this.state.hotelinf.id}></Rooms>
 
-
+)}
 
 
 <div className="row  p-0 m-0 align-items-end">
@@ -127,7 +128,7 @@ if(comments.length>0){
              {this.state.comment.id?(
               <div className="d-flex align-items-center  justify-content-between rev  p-3" >
                 <div className=" col-1 text-start" onClick={()=>this.changecomment(-1)} >
-              <i class="c-arrow text-white fas fa-caret-left" ></i>
+              <i className="c-arrow text-white fas fa-caret-left" ></i>
               </div>
               <div className="col-10">
 <div className="d-flex  justify-content-between align-items-center">
@@ -152,7 +153,7 @@ if(comments.length>0){
               </div>
             
               <div className="col-1 text-end p-0 m-0" onClick={()=>this.changecomment(1)}>
-              <i class="c-arrow text-white fas fa-caret-right"></i>
+              <i className="c-arrow text-white fas fa-caret-right"></i>
               </div>
             </div>
 

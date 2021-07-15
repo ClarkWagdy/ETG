@@ -24,7 +24,7 @@ else{
 
             <span className="head-bg s-h" style={{position: "absolute",zIndex:"10",width:"100%"}}>
          <Header {...this.props} user={this.props.user} ></Header></span>
-         <InRoom room={this.state.room} hotelinf={this.state.hotelinf}></InRoom>
+         <InRoom room={this.state.room} hotelinf={this.state.hotelinf} type={this.props.match.params.type}></InRoom>
          <div className="footer-bg ">
          <Footer></Footer></div>
  

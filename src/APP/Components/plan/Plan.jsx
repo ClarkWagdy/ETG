@@ -234,6 +234,7 @@ class Plan extends Component {
       });
   };
   render() {
+    
     if (this.state.load) {
       return <Loading />;
     }
@@ -470,7 +471,7 @@ class Plan extends Component {
               <div className="review-banel p-0 m-0">
                 <AddReview
                   questions={this.state.plan.questions}
-                  type={"places"}
+                  type={"plans"}
                   closereview={this.closereview}
                   id={this.state.plan.id}
                 ></AddReview>

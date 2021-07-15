@@ -26,16 +26,14 @@ class Login extends Component {
       .then((response) => {
         this.setuser(response.data);
         if(document.referrer==="http://localhost:3000/mustlogin"){
-          window.location.replace("/")
+          window.history.back();
+      
         }
         else if(window.location.href==="http://localhost:3000/login"){
-       console.log(document.referrer)
-        // window.location.replace(document.referrer)
-       
+  
+          window.location.replace("/")
         }
-     else{
-      window.location.replace(window.location.href);
-     }
+   
       })
       .catch(function (error) {
          backenderror = error.response.data.errors[0];

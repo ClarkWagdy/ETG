@@ -207,7 +207,7 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/room/:id/:hid"
+                path="/room/:id/:hid/:type?"
                 exact
                 render={(props) => (
                   <Room
@@ -220,7 +220,7 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/hotel/:id"
+                path="/hotel/:id/:type?"
                 exact
                 render={(props) => (
                   <Hotel

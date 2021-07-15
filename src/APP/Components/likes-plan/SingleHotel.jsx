@@ -48,7 +48,7 @@ class SingleHotel extends Component {
                         this.props.hotels.hotel
                           ? this.props.hotels.hotel.id
                           : this.props.hotels.id
-                      }`
+                      }/tr`
                     )
               }
             >
@@ -100,15 +100,7 @@ class SingleHotel extends Component {
               ) : (
                 <button
                   className="p-0 m-0 btn-read"
-                  onClick={() => {
-                    window.location.assign(
-                      `/room/${this.props.room.id}/${
-                        this.props.hotels.hotel
-                          ? this.props.hotels.hotel.id
-                          : this.props.hotels.id
-                      }}`
-                    );
-                  }}
+                  onClick={() => {window.location.assign(`/room/${this.props.room.id}/${this.props.show?this.props.hotels.id:this.props.hotels.hotel.id}/tr`)}}
                 >
                   Read more
                 </button>
