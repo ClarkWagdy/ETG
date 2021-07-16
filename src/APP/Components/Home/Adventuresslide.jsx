@@ -109,8 +109,8 @@ return(<NotFound></NotFound>)
                           {this.state.pestadventure[0].name}
                         </h2>
                       </div>
-                      <div className="row p-0 m-0">
-                        <p className="text-white tex-des p-0 m-0 w-50">
+                      <div className="row p-0 m-0 w-p-slide">
+                        <p className="text-white tex-des p-0 m-0 ">
                         {this.state.pestadventure[0].description.substr(0,this.state.pestadventure[0].description.indexOf(".")+1)}
                         </p>
                       </div>
@@ -139,8 +139,8 @@ return(<NotFound></NotFound>)
                           {this.state.pestadventure[1].name}
                         </h2>
                       </div>
-                      <div className="row p-0 m-0">
-                        <p className="text-white tex-des p-0 m-0 w-50">
+                      <div className="row p-0 m-0 w-p-slide">
+                        <p className="text-white tex-des p-0 m-0 ">
                           {this.state.pestadventure[1].description.substr(0,this.state.pestadventure[1].description.indexOf(".")+1)}
                         </p>
                       </div>
@@ -167,8 +167,8 @@ return(<NotFound></NotFound>)
                           {this.state.pestadventure[2].name}
                         </h2>
                       </div>
-                      <div className="row p-0 m-0">
-                        <p className="text-white tex-des p-0 m-0 w-50">
+                      <div className="row p-0 m-0 w-p-slide">
+                        <p className="text-white tex-des p-0 m-0 ">
                           {this.state.pestadventure[2].description.substr(0,this.state.pestadventure[2].description.indexOf(".")+1)}
                         </p>
                       </div>
