@@ -32,7 +32,7 @@ class Tour extends Component {
               </span>
             </div>
             <div className="col-12 col-xl-8 row justify-content-center p-0 m-0 px-4">
-              <div className="select p-1 m-0 text-center">
+              <div className="select p-1 m-0 text-center w-100">
                 <h3 className="text-white">Destination</h3>
                 <span className="row text-start">
                   <label className=" text-white p-0 m-0 fs-5 ps-3 mx-2">
@@ -219,7 +219,7 @@ class Tour extends Component {
                  style={{}}
                 />
               </div>
-<div className="col-12 col-xl-6 select p-1 m-0">
+<div className="col-12 col-xl-6 select p-1 m-0 w-100">
 <label
                   className=" text-white p-0 m-0 fs-5 mx-2"
                 
