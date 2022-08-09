@@ -25,3 +25,10 @@
     background-image: linear-gradient(to top, rgba(20,22,32, 1),  transparent) !important; 
 }
 
+.Tour{
+height: 100vh;
+display: flex;
+flex-direction: column;
+width: 100%;
+justify-content: space-between;
+}

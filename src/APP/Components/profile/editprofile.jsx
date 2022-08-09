@@ -59,9 +59,9 @@ delete state.backenderror
 
 if(state.fullname.length>10 &&state.phone&&state.email.includes("@",".")&&state.country){
 const saveuser = new FormData();
-Object.keys(state).filter((key) => {
-  saveuser.append( (key==="picture")?(`avatar`):(key), state[key]);
-});
+
+
+Object.keys(state).filter(key=> saveuser.append( (key==="picture")?(`avatar`):(key), state[key]));
 
 var backenderror = "";
 await axios.put(`${backendurl}/profile`, saveuser, { headers: { Authorization: `${this.state.token.token}`}})

@@ -195,17 +195,17 @@ showscrollclick=(item)=>{
               <Animate
                 play={this.state.play}
                 start={{
-                  transform: "translateX(68vw)",
+                  transform: "translateX(0)",
                   opacity: "0",
                   willChange: "transform, opacity",
                 }}
                 end={{
-                  transform: "translateX(43vw)",
+                  transform: "translateX(100%)",
                   opacity: "1",
                   willChange: "transform, opacity",
                 }}
               >
-                <div className="w-100 d-flex justify-content-center">
+                <div className="w-100vw d-flex justify-content-center">
                 <ul className=" m-0 p-0">
                 <li  className= " nav-text my-3 text-center  d-flex justify-content-center align-items-center"onClick={this.ani} >
                           <UserorLogin/> 

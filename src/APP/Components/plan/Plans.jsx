@@ -41,6 +41,7 @@ class Plans extends Component {
     if (this.state.cities.length > 0)
     return (
         <React.Fragment>
+          <div className="plan">
           <Header
             {...this.props}
             setuser={this.props.setuser}
@@ -89,9 +90,12 @@ class Plans extends Component {
           <div className="footer-bg">
             <Footer />
           </div>
+          </div>
         </React.Fragment>
       );
-    else return <Loading></Loading>;
+    else return (<div className="loadingfull">
+      <Loading/>
+    </div>);
   }
 }
 

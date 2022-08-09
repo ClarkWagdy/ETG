@@ -11,9 +11,9 @@ import $ from "jquery";
 import AddReview from "./../mostuse/addreview";
 import gettoken from "./../mostuse/gettoken";
 import SingleHotel from "../likes-plan/SingleHotel";
-import getnotifications from "../mostuse/getnotifications";
+ 
 import Rate from "./../mostuse/rate";
-import Hotelshow from "./Hotelshow";
+ 
 function NextArrow(props) {
   var { onClick } = props;
   return (
@@ -109,12 +109,8 @@ class ProfilePlan extends Component {
   handelchangeday=day=> {
     var tour = [];
 var daynum=this.state.daynum+day;
-if(daynum>=1&& daynum<=this.state.splan.duration.days||day===0)
- {   this.state.splan.tour.map((ele) => {
-      if (ele.day === `${daynum}`) {
-        tour.push(ele);
-      }
-    });
+if(daynum>=1&& (daynum<=this.state.splan.duration.days||day===0))
+ {   this.state.splan.tour.map(ele=> ele.day === `${daynum}`&& tour.push(ele));
     this.setState({ tour,daynum });}
   }
 
@@ -252,7 +248,7 @@ if(daynum>=1&& daynum<=this.state.splan.duration.days||day===0)
                 <>
                   <div
                     className={
-                      ind % 2 == 0
+                      ind % 2 === 0
                         ? "w-bg row d-flex my-2 m-0 p-2 align-items-center justify-content-between"
                         : "row d-flex  my-2 m-0 p-2 align-items-center justify-content-between"
                     }

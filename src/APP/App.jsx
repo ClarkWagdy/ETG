@@ -172,7 +172,7 @@ class App extends Component {
                       setuser={this.setuser}
                       city={this.state.city}
                       adventure={this.state.adventure}
-                      setuser={this.setuser}
+                   
                       user={this.state.user}
                       {...props}
                     />

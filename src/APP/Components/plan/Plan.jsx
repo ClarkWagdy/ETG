@@ -95,12 +95,7 @@ class Plan extends Component {
     var tour = [];
     var daynum = this.state.daynum + day;
     if ((daynum >= 1 && daynum <= this.state.plan.duration.days) || day === 0) {
-      this.state.plan.tour.filter((ele) => {
-        if (ele.day === `${daynum}`) {
-          tour.push(ele);
-        }
-
-      });
+      this.state.plan.tour.filter(ele=>ele.day === `${daynum}`&&tour.push(ele));
       this.setState({ tour, daynum });
     }
   };

@@ -23,9 +23,7 @@ class Plan extends Component {
       })
       .then((res) => {
         var hotel = [];
-        res.data.hotels.map((rels) => {
-          hotel.push(rels.hotel);
-        });
+        res.data.hotels.map(rels =>hotel.push(rels.hotel));
         this.setState({
           plans: res.data.plans,
           hotels: res.data.hotels,

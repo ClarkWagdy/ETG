@@ -164,9 +164,9 @@ class Register extends Component {
   async signup(state) {
     const user = new FormData();
 
-    Object.keys(state).filter((key) => {
-      user.append(key, state[key]);
-    });
+    Object.keys(state).filter( key => 
+      user.append(key, state[key])
+    );
     var backenderror = "";
     await axios
       .post(`${backendurl}/signup`, user)
@@ -263,7 +263,9 @@ class Register extends Component {
           className="container-fluid register-bg-img p-0 m-0"
           style={{ backgroundImage: `url(/images/6.jpg)` }}
         >
+              
           <div className="container-fluid register-bg-color p-0 m-0 ">
+          <div className="contentdiv">
             <Header {...this.props} user={this.props.user}></Header>
 
             <div className="row align-items-center justify-content-center p-0  m-0">
@@ -502,7 +504,7 @@ class Register extends Component {
               <Footer></Footer>
             </div>
           </div>
-        </div>
+        </div></div>
       </React.Fragment>
     );
   }

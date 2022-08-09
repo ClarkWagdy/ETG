@@ -42,15 +42,15 @@ class Footer extends Component {
             <div className="row justify-content-between  m-0 p-0">
               <div className="col-6 p-0 m-0">
                 <p className="text-white d-inline">Find Us On</p>
-                <Link className="mx-1  social-icon facebook ">
+                <Link  to="/" className="mx-1  social-icon facebook ">
                   {" "}
                   <i className="fab fa-facebook-f fa-lg"></i>
                 </Link>
-                <Link className="mx-1 social-icon ">
+                <Link  to="/" className="mx-1 social-icon ">
                   {" "}
                   <i className="icon-p fab fa-twitter fa-lg"></i>
                 </Link>
-                <Link className="mx-1 social-icon ">
+                <Link  to="/" className="mx-1 social-icon ">
                   <i className="icon-p fab fa-linkedin-in fa-lg"></i>
                 </Link>
               </div>
@@ -69,11 +69,11 @@ class Footer extends Component {
               </div>
 
               <div className="col d-flex justify-content-end  p-0 m-0">
-                <Link className="me-0 mx-2 social-icon ">
+                <Link to="/" className="me-0 mx-2 social-icon ">
                   <i className="icon-p fab fa-android fa-2x"></i>
                 </Link>
                 
-               <Link className="me-0 mx-2 social-icon">
+               <Link to="/" className="me-0 mx-2 social-icon">
                   <i className="icon-p fab fa-apple fa-2x "></i>
                 </Link>
               </div>

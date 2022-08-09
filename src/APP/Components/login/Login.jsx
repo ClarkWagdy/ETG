@@ -89,7 +89,7 @@ class Login extends Component {
                 Login
               </button>
               <p className="text-white p-0 m-0 mx-2">Or login by</p>
-              <Link className="googel-icon p-0 m-0">
+              <Link to="/" className="googel-icon p-0 m-0">
                 <i className="fab fa-google fa-lg"></i>
               </Link>
             </div>

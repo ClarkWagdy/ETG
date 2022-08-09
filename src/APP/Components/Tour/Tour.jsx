@@ -13,6 +13,9 @@ class Tour extends Component {
   render() {
     return (
       <React.Fragment>
+        <div className="Tour">
+
+      
         <Header
           {...this.props}
           setuser={this.props.setuser}
@@ -28,7 +31,7 @@ class Tour extends Component {
                 <span className="r-tg font-face-ab">TOUR GUIDE</span>
               </span>
             </div>
-            <div className="col-12 col-xl-8 row justify-content-center">
+            <div className="col-12 col-xl-8 row justify-content-center p-0 m-0 px-4">
               <div className="select p-1 m-0 text-center">
                 <h3 className="text-white">Destination</h3>
                 <span className="row text-start">
@@ -328,6 +331,7 @@ class Tour extends Component {
         </video>
 
         <Footer></Footer>
+        </div>
       </React.Fragment>
     );
   }

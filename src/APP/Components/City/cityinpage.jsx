@@ -74,6 +74,7 @@ class CityInPage extends Component {
                             style={{ fontSize: "10px" }}
                           ></i>
                         </div>
+                     
                         <video
                           onClick={() => this.changebackground(index)}
                           muted
@@ -81,7 +82,7 @@ class CityInPage extends Component {
                           className="square-media vide "
                         >
                           <source src={`${e}`} type="video/mp4" />
-                        </video>
+                        </video> 
                       </div>
                     );
                   }
@@ -97,7 +98,9 @@ class CityInPage extends Component {
                     backgroundImage: `url(${this.state.backgroundmedia})`,
                   }}
                 ></div>
-              ) : (
+              ) : this.state.backgroundmedia.includes("youtube")?(
+                <iframe  autoPlay muted loop  className="pg-me-ci vide  p-0 m-0" src={`${this.state.backgroundmedia}?autoplay=1`}  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              ):(
                 <video autoPlay muted loop className="pg-me-ci vide  p-0 m-0">
                   <source
                     src={`${this.state.backgroundmedia}`}

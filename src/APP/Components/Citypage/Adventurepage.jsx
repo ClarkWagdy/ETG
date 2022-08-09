@@ -8,7 +8,10 @@ import Search from "../mostuse/Search";
 const Adventurepage = props => {
 
   return (  <React.Fragment>
-    <div className="s-h">
+    <div className="contentdiv">
+
+ 
+    <div className="s-h ">
     <Header {...props} user={props.user} ></Header></div>
     <div className="container-fluid text-center text-white">
       <h2 className="fw-bold">What To Do</h2>
@@ -19,7 +22,7 @@ const Adventurepage = props => {
         <Cityshow data={props.adventure} type={"adventure"}></Cityshow>
         <div className="footer-bg">
     <Footer ></Footer>
-    </div>
+    </div>   </div>
   </React.Fragment> );
 }
  
